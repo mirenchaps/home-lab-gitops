@@ -38,3 +38,5 @@ admintools:
 web:
   image:
     tag: 2.52.0
+  service:
+    type: NodePort
