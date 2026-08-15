@@ -9,6 +9,10 @@ spec:
     repoURL: https://github.com/mirenchaps/home-lab-gitops.git
     targetRevision: main
     path: apps/home-network-mcp
-  destination:  
+  destination:
     server: https://kubernetes.default.svc
     namespace: default
+  syncPolicy:
+    automated:
+      prune: true       # let ArgoCD delete resources removed from Git — matches the "auto-prune" you set live
+      selfHeal: true    # let ArgoCD revert manual kubectl edits back to what Git says
