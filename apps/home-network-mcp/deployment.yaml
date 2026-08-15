@@ -5,7 +5,7 @@ metadata:
   labels:
     app: home-network-mcp
 spec:
-  replicas: "three"
+  replicas: 3
   selector:
     matchLabels:
       app: home-network-mcp
