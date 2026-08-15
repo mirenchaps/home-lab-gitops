@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: home-network-mcp-server
-          image: mirenchaps/home-network-mcp:sha-fe06326
+          image: mirenchaps/home-network-mcp:sha-8bd1957
           # Override CMD to run server.py instead of the default exporter.py
           command: ["/entrypoint.sh", "server"]
           ports:

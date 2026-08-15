@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: home-network-mcp
-          image: mirenchaps/home-network-mcp:sha-fe06326
+          image: mirenchaps/home-network-mcp:sha-8bd1957
           ports:
             - containerPort: 8000
           env:
