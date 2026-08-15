@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-network-mcp-server
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mirenchaps/home-lab-gitops.git
+    targetRevision: main
+    path: apps/home-network-mcp-server
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
