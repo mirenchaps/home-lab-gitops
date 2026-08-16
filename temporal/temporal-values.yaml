@@ -1,6 +1,9 @@
 server:
   image:
     tag: 1.31.2
+  frontend:
+    service:
+      type: NodePort
   config:
     persistence:
       defaultStore: default
