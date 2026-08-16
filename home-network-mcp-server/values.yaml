@@ -1,0 +1,30 @@
+nameOverride: home-network-mcp-server
+
+replicaCount: 1
+
+image:
+  tag: sha-8bd1957
+
+command: ["/entrypoint.sh", "server"]
+
+containerPort: 8001
+
+service:
+  nodePort: 30081
+
+extraEnv:
+  - name: HOMEBRIDGE_HOST
+    valueFrom:
+      secretKeyRef:
+        name: homebridge-credentials
+        key: host
+  - name: HOMEBRIDGE_USERNAME
+    valueFrom:
+      secretKeyRef:
+        name: homebridge-credentials
+        key: username
+  - name: HOMEBRIDGE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: homebridge-credentials
+        key: password

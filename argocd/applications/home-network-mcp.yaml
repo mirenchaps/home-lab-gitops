@@ -5,10 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:     
-    repoURL: https://github.com/mirenchaps/home-lab-gitops.git
-    targetRevision: main
-    path: apps/home-network-mcp
+  sources:
+    - repoURL: https://github.com/mirenchaps/home-lab-gitops.git
+      targetRevision: main
+      path: charts/home-network-mcp
+      helm:
+        valueFiles:
+          - $values/home-network-mcp/values.yaml
+    - repoURL: https://github.com/mirenchaps/home-lab-gitops.git
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: default
