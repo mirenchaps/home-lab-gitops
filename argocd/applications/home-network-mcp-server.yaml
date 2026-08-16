@@ -12,3 +12,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: default
+  syncPolicy:
+    automated:
+      prune: true       # let ArgoCD delete resources removed from Git
+      selfHeal: true    # let ArgoCD revert manual kubectl edits back to what Git says
