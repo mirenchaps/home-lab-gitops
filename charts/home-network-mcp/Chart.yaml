@@ -1,0 +1,5 @@
+apiVersion: v2
+name: home-network-mcp
+description: Shared chart for the home-network-mcp exporter and server variants
+type: application
+version: 0.1.0

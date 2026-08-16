@@ -1,26 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: home-network-mcp-server
+  name: {{ .Values.nameOverride }}
   labels:
-    app: home-network-mcp-server
+    app: {{ .Values.nameOverride }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: home-network-mcp-server
+      app: {{ .Values.nameOverride }}
   template:
     metadata:
       labels:
-        app: home-network-mcp-server
+        app: {{ .Values.nameOverride }}
     spec:
       containers:
-        - name: home-network-mcp-server
-          image: mirenchaps/home-network-mcp:sha-8bd1957
-          # Override CMD to run server.py instead of the default exporter.py
-          command: ["/entrypoint.sh", "server"]
+        - name: {{ .Values.nameOverride }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          {{- with .Values.command }}
+          command: {{ toYaml . | nindent 12 }}
+          {{- end }}
           ports:
-            - containerPort: 8001
+            - containerPort: {{ .Values.containerPort }}
           env:
             - name: WINRM_USERNAME
               valueFrom:
@@ -32,21 +33,9 @@ spec:
                 secretKeyRef:
                   name: winrm-credentials
                   key: password
-            - name: HOMEBRIDGE_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: homebridge-credentials
-                  key: host
-            - name: HOMEBRIDGE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: homebridge-credentials
-                  key: username
-            - name: HOMEBRIDGE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: homebridge-credentials
-                  key: password
+            {{- with .Values.extraEnv }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
           volumeMounts:
             - name: pi-ssh-key
               mountPath: /app/id_ed25519
