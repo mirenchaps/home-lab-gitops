@@ -1,0 +1,3 @@
+# Chart default is false — cert-manager cannot function without its own CRDs.
+crds:
+  enabled: true
