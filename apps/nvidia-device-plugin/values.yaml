@@ -1,0 +1,14 @@
+# The GPU node carries workload=ml:NoSchedule, so the DaemonSet needs the
+# toleration to land there and the selector to stay off the control plane.
+nodeSelector:
+  workload: ml
+
+tolerations:
+  - key: workload
+    operator: Equal
+    value: ml
+    effect: NoSchedule
+
+# Selects the nvidia runtime k3s registered in containerd, without which the
+# plugin cannot reach the driver.
+runtimeClassName: nvidia
