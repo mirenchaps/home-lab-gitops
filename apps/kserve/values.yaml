@@ -7,3 +7,9 @@ kserve:
     # No nodeSelector/tolerations here on purpose: the controller is a
     # reconciliation loop, not a GPU workload, and pinning it to the laptop node
     # would take KServe down whenever that node does.
+
+  storage:
+    resources:
+      limits:
+        # Chart default is 1Gi, which OOMKills while fetching multi-GB LLM weights.
+        memory: 8Gi
