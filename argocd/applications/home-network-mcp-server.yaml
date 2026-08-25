@@ -11,7 +11,7 @@ spec:
       path: charts/home-network-mcp
       helm:
         valueFiles:
-          - $values/home-network-mcp-server/values.yaml
+          - $values/apps/home-network-mcp-server/values.yaml
     - repoURL: https://github.com/mirenchaps/home-lab-gitops.git
       targetRevision: main
       ref: values
