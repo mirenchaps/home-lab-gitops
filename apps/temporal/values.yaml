@@ -33,6 +33,15 @@ server:
             existingSecret: temporal-db-secret
             secretKey: password
             createDatabase: true
+    namespaces:
+      create: true
+      # The setup job runs `namespace describe || namespace create`, so listing
+      # an already-existing namespace here is a no-op rather than an error.
+      namespace:
+        - name: default
+          retention: 3d
+        - name: homelab
+          retention: 3d
 
 admintools:
   image:
