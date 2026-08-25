@@ -12,3 +12,8 @@ tolerations:
 # Selects the nvidia runtime k3s registered in containerd, without which the
 # plugin cannot reach the driver.
 runtimeClassName: nvidia
+
+# The chart's default node affinity requires Node Feature Discovery labels that
+# this cluster does not produce, which excludes every node. The nodeSelector
+# above already targets the GPU node.
+affinity: {}
