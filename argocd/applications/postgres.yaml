@@ -11,7 +11,7 @@ spec:
       targetRevision: 18.8.9
       helm:
         valueFiles:
-          - $values/temporal/postgres-values.yaml
+          - $values/apps/postgres/values.yaml
     - repoURL: https://github.com/mirenchaps/home-lab-gitops.git
       targetRevision: main
       ref: values
@@ -22,3 +22,5 @@ spec:
     automated:
       prune: true       # let ArgoCD delete resources removed from Git
       selfHeal: true    # let ArgoCD revert manual kubectl edits back to what Git says
+    syncOptions:
+      - CreateNamespace=true
