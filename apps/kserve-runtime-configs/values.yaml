@@ -1,0 +1,5 @@
+kserve:
+  servingruntime:
+    # Chart default is false, which renders no runtimes at all and leaves every
+    # InferenceService failing with NoSupportingRuntime.
+    enabled: true
