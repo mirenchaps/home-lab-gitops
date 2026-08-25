@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kserve
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: ghcr.io/kserve/charts
+      chart: kserve-resources
+      targetRevision: v0.20.0
+      helm:
+        valueFiles:
+          - $values/apps/kserve/values.yaml
+    - repoURL: https://github.com/mirenchaps/home-lab-gitops.git
+      targetRevision: main
+      ref: values
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kserve
+  syncPolicy:
+    automated:
+      prune: true       # let ArgoCD delete resources removed from Git
+      selfHeal: true    # let ArgoCD revert manual kubectl edits back to what Git says
+    syncOptions:
+      - CreateNamespace=true

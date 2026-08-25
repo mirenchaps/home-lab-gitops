@@ -1,0 +1,9 @@
+kserve:
+  controller:
+    # Chart default is Knative, which would pull in Knative and Istio. "Standard"
+    # is the current name for the mode formerly called RawDeployment.
+    deploymentMode: Standard
+
+    # No nodeSelector/tolerations here on purpose: the controller is a
+    # reconciliation loop, not a GPU workload, and pinning it to the laptop node
+    # would take KServe down whenever that node does.
