@@ -1,0 +1,29 @@
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  name: qwen
+  namespace: default
+spec:
+  predictor:
+    # All three are required and do different jobs: the toleration gets past the
+    # node taint, the selector sends it there, the resource claims a device.
+    nodeSelector:
+      workload: ml
+    tolerations:
+      - key: workload
+        operator: Equal
+        value: ml
+        effect: NoSchedule
+    model:
+      modelFormat:
+        name: huggingface
+      storageUri: hf://Qwen/Qwen2.5-3B-Instruct
+      resources:
+        requests:
+          cpu: "2"
+          memory: 8Gi
+          nvidia.com/gpu: "1"
+        limits:
+          cpu: "4"
+          memory: 16Gi
+          nvidia.com/gpu: "1"

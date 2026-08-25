@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kserve-models
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mirenchaps/home-lab-gitops.git
+    targetRevision: main
+    path: models
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true       # let ArgoCD delete resources removed from Git
+      selfHeal: true    # let ArgoCD revert manual kubectl edits back to what Git says
