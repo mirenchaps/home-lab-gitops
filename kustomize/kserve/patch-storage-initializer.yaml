@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inferenceservice-config
+  namespace: kserve
+data:
+  # Whole key is replaced because the value is a JSON string, not YAML fields.
+  # Only memoryLimit differs from the chart's rendered output.
+  storageInitializer: |-
+    {
+        "image" : "kserve/storage-initializer:v0.20.0",
+        "memoryRequest": "100Mi",
+        "memoryLimit": "8Gi",
+        "cpuRequest": "100m",
+        "cpuLimit": "1",
+        "caBundleConfigMapName": "",
+        "caBundleVolumeMountPath": "/etc/ssl/custom-certs",
+        "enableModelcar": true,
+        "uidModelcar": 1010,
+        "cpuModelcar": "10m",
+        "memoryModelcar": "15Mi"
+    }

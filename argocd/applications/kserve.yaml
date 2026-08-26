@@ -5,16 +5,10 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
-    - repoURL: ghcr.io/kserve/charts
-      chart: kserve-resources
-      targetRevision: v0.20.0
-      helm:
-        valueFiles:
-          - $values/apps/kserve/values.yaml
-    - repoURL: https://github.com/mirenchaps/home-lab-gitops.git
-      targetRevision: main
-      ref: values
+  source:
+    repoURL: https://github.com/mirenchaps/home-lab-gitops.git
+    targetRevision: main
+    path: kustomize/kserve
   destination:
     server: https://kubernetes.default.svc
     namespace: kserve
