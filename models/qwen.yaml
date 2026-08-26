@@ -6,6 +6,10 @@ metadata:
 spec:
   predictor:
     runtimeClassName: nvidia
+    # One GPU on the node, so the new pod can never start while the old one
+    # holds it. Recreate terminates first, at the cost of downtime per update.
+    deploymentStrategy:
+      type: Recreate
     nodeSelector:
       workload: ml
     tolerations:
