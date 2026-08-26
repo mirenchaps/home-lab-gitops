@@ -8,8 +8,6 @@ kserve:
     # reconciliation loop, not a GPU workload, and pinning it to the laptop node
     # would take KServe down whenever that node does.
 
-  storage:
-    resources:
-      limits:
-        # Chart default is 1Gi, which OOMKills while fetching multi-GB LLM weights.
-        memory: 8Gi
+# The storage initializer's memory limit is not settable here: the chart
+# documents kserve.storage.resources but writes a hardcoded value into the
+# inferenceservice-config ConfigMap. It is raised in patch-storage-initializer.yaml.

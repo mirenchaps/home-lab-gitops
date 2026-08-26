@@ -14,6 +14,15 @@ tolerations:
 runtimeClassName: nvidia
 
 # The chart's default node affinity requires Node Feature Discovery labels that
-# this cluster does not produce, which excludes every node. The nodeSelector
-# above already targets the GPU node.
-affinity: {}
+# this cluster does not produce, so it excludes every node. An empty map will
+# not clear it, because the template guards the block with `with` and skips
+# falsy values, so it has to be overridden with a term that actually matches.
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: workload
+              operator: In
+              values:
+                - ml
