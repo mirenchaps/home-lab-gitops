@@ -5,8 +5,7 @@ metadata:
   namespace: default
 spec:
   predictor:
-    # All three are required and do different jobs: the toleration gets past the
-    # node taint, the selector sends it there, the resource claims a device.
+    runtimeClassName: nvidia
     nodeSelector:
       workload: ml
     tolerations:
