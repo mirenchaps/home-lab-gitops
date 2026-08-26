@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: kserve
+
+helmCharts:
+  - name: kserve-resources
+    version: v0.20.0
+    releaseName: kserve
+    namespace: kserve
+    valuesFile: values.yaml
+
+# The chart hardcodes storageInitializer memoryLimit and ignores its own
+# kserve.storage.resources values, so it can only be changed after rendering.
+patches:
+  - path: patch-storage-initializer.yaml
