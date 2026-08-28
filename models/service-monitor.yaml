@@ -10,6 +10,6 @@ spec:
     matchLabels:
       component: predictor
   endpoints:
-    - targetPort: 8080
+    - port: qwen-predictor
       path: /metrics
       interval: 15s
