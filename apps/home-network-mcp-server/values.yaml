@@ -19,6 +19,9 @@ metrics:
   enabled: true
   path: /metrics
 
+dashboard:
+  enabled: true
+
 extraEnv:
   - name: HOMEBRIDGE_HOST
     valueFrom:

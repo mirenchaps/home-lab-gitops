@@ -1,0 +1,13 @@
+{{- if .Values.dashboard.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-{{ .Values.nameOverride }}
+  labels:
+    # Grafana's sidecar watches for this label across all namespaces.
+    grafana_dashboard: "1"
+data:
+  # Read from a file rather than inlined, so Grafana's {{ "{{field}}" }} legend
+  # syntax is not parsed as Helm templating.
+{{ (.Files.Glob "dashboards/*.json").AsConfig | indent 2 }}
+{{- end }}
