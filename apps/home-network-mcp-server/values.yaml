@@ -15,9 +15,6 @@ service:
 healthCheck:
   path: /health
 
-# The MCP server's own tool-call metrics, added specifically so it can serve
-# as a chaos target with a real steady-state baseline rather than only a
-# static /health check.
 metrics:
   enabled: true
   path: /metrics
