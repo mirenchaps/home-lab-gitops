@@ -22,3 +22,8 @@ healthCheck: {}
 # required, this Prometheus only adopts ServiceMonitors carrying that label).
 metrics:
   enabled: false
+
+# Ships dashboards/*.json as a Grafana-sidecar ConfigMap. Only one app needs it,
+# since the dashboard covers both Deployments.
+dashboard:
+  enabled: false
