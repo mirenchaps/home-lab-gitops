@@ -9,3 +9,8 @@ containerPort: 8000
 
 service:
   nodePort: 30080
+
+# Probes only -- this app's device metrics already go to Grafana Cloud via
+# Alloy, which stays untouched. Not scraped locally unless asked for.
+healthCheck:
+  path: /metrics

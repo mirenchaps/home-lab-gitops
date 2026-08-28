@@ -14,3 +14,11 @@ service:
   nodePort: 30080
 
 extraEnv: []
+
+# Set per-app to enable readiness/liveness probes against a real endpoint.
+healthCheck: {}
+
+# Set per-app to opt into local Prometheus scraping (release: prometheus is
+# required, this Prometheus only adopts ServiceMonitors carrying that label).
+metrics:
+  enabled: false
