@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: servicemonitor
+  namespace: default
+  labels: 
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      component: predictor
+  endpoints:
+    - targetPort: 8080
+      path: /metrics
+      interval: 15s
