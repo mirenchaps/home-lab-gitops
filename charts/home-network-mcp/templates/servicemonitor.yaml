@@ -1,0 +1,19 @@
+{{- if .Values.metrics.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Values.nameOverride }}
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.nameOverride }}
+  endpoints:
+    # targetPort resolves against the container's declared containerPort.
+    # Unlike KServe's predictor container, this Deployment does declare one,
+    # so targetPort works here -- port-by-name is not needed.
+    - targetPort: {{ .Values.containerPort }}
+      path: {{ .Values.metrics.path | default "/metrics" }}
+      interval: 15s
+{{- end }}

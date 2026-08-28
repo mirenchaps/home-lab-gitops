@@ -22,6 +22,21 @@ spec:
           {{- end }}
           ports:
             - containerPort: {{ .Values.containerPort }}
+          {{- with .Values.healthCheck }}
+          readinessProbe:
+            httpGet:
+              path: {{ .path }}
+              port: {{ .port | default $.Values.containerPort }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: {{ .path }}
+              port: {{ .port | default $.Values.containerPort }}
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            failureThreshold: 3
+          {{- end }}
           env:
             - name: WINRM_USERNAME
               valueFrom:
