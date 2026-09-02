@@ -14,3 +14,4 @@ helmCharts:
 # kserve.storage.resources values, so it can only be changed after rendering.
 patches:
   - path: patch-storage-initializer.yaml
+  - path: patch-clusterstoragecontainer.yaml
