@@ -1,0 +1,12 @@
+apiVersion: serving.kserve.io/v1alpha1
+kind: ClusterStorageContainer
+metadata:
+  name: default
+spec:
+  # This wins over the inferenceservice-config ConfigMap whenever the model URI
+  # matches supportedUriFormats (hf:// does), so the limit must be raised here.
+  container:
+    name: storage-initializer
+    resources:
+      limits:
+        memory: 8Gi
