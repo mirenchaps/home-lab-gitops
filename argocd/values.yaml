@@ -1,0 +1,20 @@
+server:
+  service:
+    type: NodePort
+    nodePortHttp: 31642
+    nodePortHttps: 31728
+
+repoServer:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  livenessProbe:
+    timeoutSeconds: 5
+    failureThreshold: 5
+  readinessProbe:
+    timeoutSeconds: 3
+    failureThreshold: 3
