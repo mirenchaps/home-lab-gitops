@@ -5,6 +5,8 @@ server:
     nodePortHttps: 31728
 
 repoServer:
+  emptyDir:
+    sizeLimit: 1Gi
   resources:
     requests:
       cpu: 100m
