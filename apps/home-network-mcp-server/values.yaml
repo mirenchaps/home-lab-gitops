@@ -1,6 +1,6 @@
 nameOverride: home-network-mcp-server
 
-replicaCount: 1
+replicaCount: 2
 
 image:
   tag: sha-bb5cf3f
@@ -21,6 +21,9 @@ metrics:
 
 dashboard:
   enabled: true
+
+chaosExperiment:
+  enabled: false
 
 extraEnv:
   - name: HOMEBRIDGE_HOST

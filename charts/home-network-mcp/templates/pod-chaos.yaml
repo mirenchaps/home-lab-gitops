@@ -1,0 +1,19 @@
+{{- with .Values.chaosExperiment }}
+{{- if .enabled }}
+apiVersion: chaos-mesh.org/v1alpha1
+kind: PodChaos
+metadata:
+  name: home-network-mcp-server-pod-kill
+  labels:
+    app: home-network-mcp-server
+spec:
+  action: pod-kill
+  mode: one
+  selector:
+    namespaces:
+      - default
+    labelSelectors:
+      app: home-network-mcp-server
+  duration: 60s
+{{- end }}
+{{- end }}
