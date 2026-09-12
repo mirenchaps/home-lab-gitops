@@ -11,6 +11,7 @@ containerPort: 8001
 
 service:
   nodePort: 30081
+  sessionAffinity: ClientIP
 
 healthCheck:
   path: /health
@@ -23,7 +24,7 @@ dashboard:
   enabled: true
 
 chaosExperiment:
-  enabled: true
+  enabled: false
 
 extraEnv:
   - name: HOMEBRIDGE_HOST
