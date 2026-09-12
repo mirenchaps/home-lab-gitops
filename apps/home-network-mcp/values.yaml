@@ -3,7 +3,7 @@ nameOverride: home-network-mcp
 replicaCount: 4
 
 image:
-  tag: sha-bb5cf3f
+  tag: sha-097a618
 
 containerPort: 8000
 
