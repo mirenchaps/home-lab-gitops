@@ -6,6 +6,7 @@ metadata:
     app: {{ .Values.nameOverride }}
 spec:
   type: NodePort
+  sessionAffinity: {{ .Values.service.sessionAffinity | default "None" }}
   selector:
     app: {{ .Values.nameOverride }}
   ports:
