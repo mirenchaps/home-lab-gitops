@@ -23,7 +23,7 @@ dashboard:
   enabled: true
 
 chaosExperiment:
-  enabled: true
+  enabled: false
 
 extraEnv:
   - name: HOMEBRIDGE_HOST
