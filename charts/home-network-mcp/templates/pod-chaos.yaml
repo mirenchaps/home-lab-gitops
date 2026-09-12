@@ -4,6 +4,8 @@ apiVersion: chaos-mesh.org/v1alpha1
 kind: PodChaos
 metadata:
   name: home-network-mcp-server-pod-kill
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   labels:
     app: home-network-mcp-server
 spec:
