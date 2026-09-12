@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    uses: mirenchaps/ci-platform/.github/workflows/gitops-validate.yml@main
+    with:
+      helm-charts: |
+        charts/home-network-mcp
+      kustomize-roots: |
+        kustomize/kserve
