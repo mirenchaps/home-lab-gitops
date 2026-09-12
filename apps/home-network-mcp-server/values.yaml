@@ -24,7 +24,8 @@ dashboard:
   enabled: true
 
 chaosExperiment:
-  enabled: false
+  enabled: true
+  targetPod: home-network-mcp-server-f47b4d5fd-m7cxm
 
 extraEnv:
   - name: HOMEBRIDGE_HOST
