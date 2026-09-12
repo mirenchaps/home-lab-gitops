@@ -12,10 +12,8 @@ spec:
   action: pod-kill
   mode: one
   selector:
-    namespaces:
-      - default
-    labelSelectors:
-      app: home-network-mcp-server
-  duration: 60s
+    pods:
+      default:
+        - {{ required "chaosExperiment.targetPod is required" .targetPod | quote }}
 {{- end }}
 {{- end }}
