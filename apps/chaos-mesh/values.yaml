@@ -3,4 +3,4 @@ chaosDaemon:
   socketPath: /run/k3s/containerd/containerd.sock
 
 dashboard:
-  create: false
+  create: true
