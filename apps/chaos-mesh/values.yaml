@@ -1,6 +1,9 @@
 chaosDaemon:
   runtime: containerd
   socketPath: /run/k3s/containerd/containerd.sock
-
-dashboard:
-  create: true
+  # k3s-ai is tainted workload=ml:NoSchedule; without this no fault can be injected there.
+  tolerations:
+    - key: workload
+      operator: Equal
+      value: ml
+      effect: NoSchedule
