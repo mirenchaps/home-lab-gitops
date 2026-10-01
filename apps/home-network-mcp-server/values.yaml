@@ -1,6 +1,6 @@
 nameOverride: home-network-mcp-server
 
-replicaCount: 2
+replicaCount: 3
 
 image:
   tag: sha-0febc60
