@@ -42,4 +42,4 @@ extraEnv:
     valueFrom:
       secretKeyRef:
         name: homebridge-credentials
-        key: password# gate5-ranking-test: force a fresh revision for image-update capture
+        key: password
