@@ -1,6 +1,6 @@
 nameOverride: home-network-mcp-server
 
-replicaCount: 3
+replicaCount: 4
 
 image:
   tag: ranking-test-2-does-not-exist
