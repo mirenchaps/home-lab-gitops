@@ -1,9 +1,9 @@
 nameOverride: home-network-mcp-server
 
-replicaCount: 4
+replicaCount: 2
 
 image:
-  tag: ranking-test-2-does-not-exist
+  tag: sha-0febc60
 
 command: ["/entrypoint.sh", "server"]
 
