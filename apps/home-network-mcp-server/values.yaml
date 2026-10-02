@@ -3,7 +3,7 @@ nameOverride: home-network-mcp-server
 replicaCount: 2
 
 image:
-  tag: sha-0febc60
+  tag: sha-brokentest7
 
 command: ["/entrypoint.sh", "server"]
 
