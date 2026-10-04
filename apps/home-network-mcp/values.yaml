@@ -5,11 +5,6 @@ replicaCount: 4
 image:
   tag: sha-0febc60
 
-command:
-  - /bin/sh
-  - -c
-  - exit 1
-
 containerPort: 8000
 
 service:
